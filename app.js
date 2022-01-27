@@ -22,7 +22,7 @@ app.use(cors({ origin: UI_URI, credentials: true }))
 const userRoutes = require('./routes/users')
 const reservationRoutes = require('./routes/reservations')
 
-const Reservation = require('./models/reservation')
+const Reservation = require('./models/Reservation')
 const authMiddleware = require('./middleware/authMiddleware')
 
 // Routes
