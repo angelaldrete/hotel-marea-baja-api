@@ -2,10 +2,10 @@
   "name": "hotel-marea-baja-api",
   "version": "1.0.0",
   "description": "Hotel Marea Baja WebService",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "npx nodemon app.js",
+    "start": "node index.js",
+    "dev": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
