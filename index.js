@@ -57,20 +57,27 @@ app.get(
       const dateOfDeparture = req.params.dateOfDeparture;
 
       // Find reservations that overlap with the dates of arrival and departure
-      const reservations = await Reservation.find({
-        $and: [
-          { dateOfArrival: { $lte: dateOfArrival } },
-          { dateOfDeparture: { $gte: dateOfDeparture } },
-        ],
-      });
+      let reservations = await Reservation.find();
+
+      reservations = reservations.filter(
+        (reservation) =>
+          (reservation.dateOfArrival >= dateOfArrival &&
+            reservation.dateOfDeparture <= dateOfDeparture) ||
+          (reservation.dateOfArrival <= dateOfArrival &&
+            reservation.dateOfDeparture >= dateOfDeparture) ||
+          (reservation.dateOfArrival >= dateOfDeparture &&
+            reservation.dateOfArrival <= dateOfDeparture) ||
+          (reservation.dateOfDeparture >= dateOfArrival &&
+            reservation.dateOfDeparture >= dateOfArrival)
+      );
 
       const occupiedRooms = reservations.map((reservation) => {
         return reservation.occupiedRooms;
       });
 
-      console.log(occupiedRooms);
+      console.log(occupiedRooms.flat());
 
-      res.send(occupiedRooms);
+      res.send(occupiedRooms.flat());
     } catch (err) {
       console.error(err.stack);
     }

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const reservationSchema = new mongoose.Schema({
   name: String,
@@ -13,7 +13,7 @@ const reservationSchema = new mongoose.Schema({
   user: Object,
   rooms: Number,
   people: Number,
-  occupiedRooms: Array
-})
+  occupiedRooms: Array,
+});
 
-module.exports = mongoose.model('Reservation', reservationSchema)
+module.exports = mongoose.model("Reservation", reservationSchema);
