@@ -11,7 +11,7 @@ const cors = require("cors");
 
 // Setup
 const PORT = process.env.PORT || 3000;
-const UI_URI = process.env.UI_URI || "http://localhost:8080";
+const UI_URI = process.env.UI_URI;
 
 // Middleware
 app.use(morgan("dev"));
